@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class StudentRepository {
@@ -23,11 +24,29 @@ public class StudentRepository {
     }
 
     public Student getStudentFromDb(String name) {
-        return studentDb.get(name);
+//        return studentDb.get(name);
+
+        Student student = null;
+        for(String s : studentDb.keySet()){
+            if (Objects.equals(s, name)){
+                student=studentDb.get(s);
+                break;
+            }
+        }
+        return student;
     }
 
     public Teacher getTeacherFromDb(String name) {
-        return teacherDb.get(name);
+//        return teacherDb.get(name);
+
+        Teacher teacher = null;
+        for(String t : teacherDb.keySet()){
+            if (Objects.equals(t,name)){
+                teacher=teacherDb.get(t);
+                break;
+            }
+        }
+        return teacher;
     }
 
     public List<String> getStudentsByTeacherNameFromDb(String teacherName) {
