@@ -72,7 +72,7 @@ public class StudentRepository {
                 }
                 pairStudentTeacherDb.remove(teacherName);
             }
-          //  teacherDb.remove(teacherName);
+            teacherDb.remove(teacherName);
 
         }
 
@@ -99,7 +99,7 @@ public class StudentRepository {
         for(String l:list){
             studentDb.remove(l);
         }
-        pairStudentTeacherDb = new HashMap<>();
+        //pairStudentTeacherDb = new HashMap<>();
 
 
 //        for (String t : pairStudentTeacherDb.keySet()) {
