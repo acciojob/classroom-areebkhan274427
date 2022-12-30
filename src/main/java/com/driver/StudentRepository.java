@@ -13,20 +13,17 @@ public class StudentRepository {
     HashMap<String, Teacher> teacherDb = new HashMap<>();
     HashMap<String, List<String>> pairStudentTeacherDb = new HashMap<>();
 
-    String addStudentToDb(Student student) {
+    public void addStudentToDb(Student student) {
         String st = student.getName();
         studentDb.put(st, student);
-        return "success";
     }
 
-    String addTeacherToDb(Teacher teacher) {
+    public void addTeacherToDb(Teacher teacher) {
         teacherDb.put(teacher.getName(), teacher);
-        return "success";
     }
 
     Student getStudentFromDb(String name) {
         return studentDb.get(name);
-
     }
 
     Teacher getTeacherFromDb(String name) {
@@ -43,7 +40,7 @@ public class StudentRepository {
     }
 
 
-    String addStudentTeacherPairToDb(String studentName, String teacherName) {
+    public void addStudentTeacherPairToDb(String studentName, String teacherName) {
         if (studentDb.containsKey(studentName) && teacherDb.containsKey(teacherName)) {
             if (pairStudentTeacherDb.containsKey(teacherName)) {
                 pairStudentTeacherDb.get(teacherName).add(studentName);
@@ -54,8 +51,6 @@ public class StudentRepository {
             }
 
         }
-        return "success";
-
     }
 
 
@@ -67,7 +62,7 @@ public class StudentRepository {
         return list;
     }
 
-    String deleteTeacherByNameFromDb(String teacherName) {
+    void deleteTeacherByNameFromDb(String teacherName) {
 //        if(teacherDb.containsKey(teacherName)){
 //
 //            if(pairStudentTeacherDb.containsKey(teacherName)){
@@ -90,11 +85,11 @@ public class StudentRepository {
             }
         }
         pairStudentTeacherDb.remove(teacherName);
-        return "success";
+
     }
 
 
-    String deleteAllTeachersFromDb() {
+    void deleteAllTeachersFromDb() {
 //        ArrayList<String> list=new ArrayList<>();
 //        for(String s:pairStudentTeacherDb.keySet()){
 //            for(String m:pairStudentTeacherDb.get(s)){
@@ -117,7 +112,7 @@ public class StudentRepository {
         }
         pairStudentTeacherDb.clear();
 
-        return "success";
+
 
     }
 

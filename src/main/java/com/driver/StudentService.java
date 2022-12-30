@@ -11,19 +11,17 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
-    public String addStudentService(Student student){
-        String result=studentRepository.addStudentToDb(student);
-        return result;
+    public void addStudentService(Student student){
+        studentRepository.addStudentToDb(student);
     }
 
-    public String addTeacherService(Teacher teacher){
-        String result=studentRepository.addTeacherToDb(teacher);
-        return result;
+    public void addTeacherService(Teacher teacher){
+        studentRepository.addTeacherToDb(teacher);
+
     }
 
-    public String addStudentTeacherPairService(String studentName,String teacherName){
-        String result=studentRepository.addStudentTeacherPairToDb(studentName,teacherName);
-        return result;
+    public void addStudentTeacherPairService(String studentName,String teacherName){
+        studentRepository.addStudentTeacherPairToDb(studentName,teacherName);
     }
 
     public Student getStudentByNameService(String name){
@@ -44,12 +42,12 @@ public class StudentService {
         return studentRepository.getAllStudentFromDb();
     }
 
-    public String deleteTeacherByNameService(String name){
-        return studentRepository.deleteTeacherByNameFromDb(name);
+    public void deleteTeacherByNameService(String name){
+        studentRepository.deleteTeacherByNameFromDb(name);
     }
 
-    public String deleteAllTeachersService(){
-        return studentRepository.deleteAllTeachersFromDb();
+    public void deleteAllTeachersService(){
+        studentRepository.deleteAllTeachersFromDb();
     }
 
 }
