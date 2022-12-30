@@ -16,7 +16,7 @@ public class StudentRepository {
 
     public void addStudentToDb(Student student) {
         String st = student.getName();
-        studentDb.put(st, student);
+        studentDb.put(st,student);
     }
 
     public void addTeacherToDb(Teacher teacher) {
@@ -24,29 +24,14 @@ public class StudentRepository {
     }
 
     public Student getStudentFromDb(String name) {
-//        return studentDb.get(name);
+        return studentDb.get(name);
 
-        Student student = null;
-        for(String s : studentDb.keySet()){
-            if (Objects.equals(s, name)){
-                student=studentDb.get(s);
-                break;
-            }
-        }
-        return student;
+
     }
 
     public Teacher getTeacherFromDb(String name) {
-//        return teacherDb.get(name);
+        return teacherDb.get(name);
 
-        Teacher teacher = null;
-        for(String t : teacherDb.keySet()){
-            if (Objects.equals(t,name)){
-                teacher=teacherDb.get(t);
-                break;
-            }
-        }
-        return teacher;
     }
 
     public List<String> getStudentsByTeacherNameFromDb(String teacherName) {
@@ -64,7 +49,7 @@ public class StudentRepository {
             if (pairStudentTeacherDb.containsKey(teacherName)) {
                 pairStudentTeacherDb.get(teacherName).add(studentName);
             } else {
-                ArrayList<String> list = new ArrayList<>();
+                List<String> list = new ArrayList<>();
                 list.add(studentName);
                 pairStudentTeacherDb.put(teacherName, list);
             }
@@ -87,7 +72,7 @@ public class StudentRepository {
             if(pairStudentTeacherDb.containsKey(teacherName)){
                 List<String> student=pairStudentTeacherDb.get(teacherName);
                 for(String s:student){
-                    student.remove(s);
+                    studentDb.remove(s);
                 }
                 pairStudentTeacherDb.remove(teacherName);
             }
@@ -118,7 +103,7 @@ public class StudentRepository {
         for(String l:list){
             studentDb.remove(l);
         }
-        pairStudentTeacherDb = new HashMap<>();
+//        pairStudentTeacherDb = new HashMap<>();
 
 
 //        for (String t : pairStudentTeacherDb.keySet()) {
