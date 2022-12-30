@@ -90,6 +90,7 @@ public class StudentRepository {
         for(String l:list){
             studentDb.remove(l);
         }
+        pairStudentTeacherDb = new HashMap<>();
         return  "success";
     }
 
