@@ -22,15 +22,15 @@ public class StudentRepository {
         teacherDb.put(teacher.getName(), teacher);
     }
 
-    Student getStudentFromDb(String name) {
+    public Student getStudentFromDb(String name) {
         return studentDb.get(name);
     }
 
-    Teacher getTeacherFromDb(String name) {
+    public Teacher getTeacherFromDb(String name) {
         return teacherDb.get(name);
     }
 
-    List getStudentsByTeacherNameFromDb(String teacherName) {
+    public List getStudentsByTeacherNameFromDb(String teacherName) {
         List<String> student = new ArrayList<>();
         if (pairStudentTeacherDb.containsKey(teacherName)) {
 
@@ -54,7 +54,7 @@ public class StudentRepository {
     }
 
 
-    List getAllStudentFromDb() {
+    public List getAllStudentFromDb() {
         ArrayList<String> list = new ArrayList<>();
         for (String s : studentDb.keySet()) {
             list.add(s);
@@ -62,56 +62,56 @@ public class StudentRepository {
         return list;
     }
 
-    void deleteTeacherByNameFromDb(String teacherName) {
-//        if(teacherDb.containsKey(teacherName)){
-//
-//            if(pairStudentTeacherDb.containsKey(teacherName)){
-//                List<String> student=pairStudentTeacherDb.get(teacherName);
-//                for(String s:student){
-//                    student.remove(s);
-//                }
-//                pairStudentTeacherDb.remove(teacherName);
-//            }
-//          //  teacherDb.remove(teacherName);
-//            return "success";
-//        }
-//        return null;
+    public void deleteTeacherByNameFromDb(String teacherName) {
+        if(teacherDb.containsKey(teacherName)){
 
-
-        List<String> student = pairStudentTeacherDb.get(teacherName);
-        for (String s : student) {
-            if (studentDb.containsKey(student)) {
-                studentDb.remove(student);
+            if(pairStudentTeacherDb.containsKey(teacherName)){
+                List<String> student=pairStudentTeacherDb.get(teacherName);
+                for(String s:student){
+                    student.remove(s);
+                }
+                pairStudentTeacherDb.remove(teacherName);
             }
+          //  teacherDb.remove(teacherName);
+
         }
-        pairStudentTeacherDb.remove(teacherName);
+
+
+
+//        List<String> student = pairStudentTeacherDb.get(teacherName);
+//        for (String s : student) {
+//            if (studentDb.containsKey(student)) {
+//                studentDb.remove(student);
+//            }
+//        }
+//        pairStudentTeacherDb.remove(teacherName);
 
     }
 
 
-    void deleteAllTeachersFromDb() {
-//        ArrayList<String> list=new ArrayList<>();
-//        for(String s:pairStudentTeacherDb.keySet()){
-//            for(String m:pairStudentTeacherDb.get(s)){
-//                list.add(m);
-//            }
-//        }
-//        for(String l:list){
-//            studentDb.remove(l);
-//        }
-//        pairStudentTeacherDb = new HashMap<>();
-//        return  "success";
-
-        for (String t : pairStudentTeacherDb.keySet()) {
-            List<String> student = pairStudentTeacherDb.get(t);
-            for (String s : student) {
-                if (studentDb.containsKey(s)) {
-                    studentDb.remove(s);
-                }
+    public void deleteAllTeachersFromDb() {
+        ArrayList<String> list=new ArrayList<>();
+        for(String s:pairStudentTeacherDb.keySet()){
+            for(String m:pairStudentTeacherDb.get(s)){
+                list.add(m);
             }
         }
-        pairStudentTeacherDb.clear();
+        for(String l:list){
+            studentDb.remove(l);
+        }
+        pairStudentTeacherDb = new HashMap<>();
 
+
+//        for (String t : pairStudentTeacherDb.keySet()) {
+//            List<String> student = pairStudentTeacherDb.get(t);
+//            for (String s : student) {
+//                if (studentDb.containsKey(s)) {
+//                    studentDb.remove(s);
+//                }
+//            }
+//        }
+//        pairStudentTeacherDb.clear();
+//
 
 
     }
