@@ -73,7 +73,7 @@ public class StudentRepository {
                 }
                 pairStudentTeacherDb.remove(teacherName);
             }
-            teacherDb.remove(teacherName);
+          //  teacherDb.remove(teacherName);
             return "success";
         }
         return null;
